@@ -13,13 +13,14 @@ import edu.princeton.cs.introcs.StdIn;
 public class StopuhrGUI {
 	
 	//Anzeige tfTime
-	static String display = "";
+	static String display = "00:00:00";
 	
 	static JFrame mainWindow = new JFrame("Stopuhr");
 	static JPanel btPanel = new JPanel();
 	static JPanel clPanel = new JPanel(); //cl = calculate
 	static JPanel tfPanel = new JPanel();
-	static JTextField tfTime = new JTextField("");
+	static JLabel lblTime = new JLabel("Time: ");
+	static JTextField tfTime = new JTextField("00:00:00");
 	static JButton btStartTimer = new JButton("Start");
 	static JButton btClearTimer = new JButton("Clear");
 	static JButton btStopTimer = new JButton("Stop");
@@ -136,8 +137,9 @@ public class StopuhrGUI {
 		clPanel.add(btStopTimer);
 		
 		mainWindow.add(tfPanel, BorderLayout.SOUTH);
+		tfPanel.add(lblTime);
 		tfPanel.add(tfTime);
-		tfTime.setPreferredSize(new Dimension(150,20));
+		tfTime.setPreferredSize(new Dimension(80,20));
 		
 		btZero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -216,7 +218,7 @@ public class StopuhrGUI {
 //				int minutes = Integer.parseInt(tfTime.getText());
 //				int hours = Integer.parseInt(tfTime.getText());
 				
-				for(int count = 0; count <= seconds /*+ (minutes*60) + (hours*3600)*/; count++) {
+				for(int count = 1; count <= seconds /*+ (minutes*60) + (hours*3600)*/; count++) {
 					System.out.println(count);
 					try {
 						Thread.sleep(1000);
